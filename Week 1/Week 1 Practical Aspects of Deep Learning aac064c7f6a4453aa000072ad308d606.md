@@ -358,3 +358,70 @@ Implications of L2-regularization on:
 - You only use dropout during training. Don't use dropout (randomly eliminate nodes) during test time.
 - Apply dropout both during forward and backward propagation.
 - During training time, divide each dropout layer by keep_prob to keep the same expected value for the activations. For example, if `keep_prob` is 0.5, then we will on average shut down half the nodes, so the output will be scaled by 0.5 since only the remaining half are contributing to the solution. Dividing by 0.5 is equivalent to multiplying by 2. Hence, the output now has the same expected value. You can check that this works even when keep_prob is other values than 0.5.
+
+## Quiz
+
+1. **If you have 10.000.000 examples, how would you split the train/dev/test sets?**
+    1. 98% train, 1% dev, 1% test
+2. ******************************************************************************************************************************If you have 20.000.000 examples, how would you split the train/dev/test sets?**
+    1. 99% train, 0.5% dev, 0.5% test
+3. **The dev and test set should:**
+    1. Come from the same distribution
+4. ******************************************************************************************************When designing a neural network to detect if a house cat is present in the picture, 500.000 pictures of cats were taken by their owners. These are used to make the training, dev and test sets. It is decided that to increase the size of the test set, 10.000 new images of cats taken from security cameras are going to be used in the test set. Which of the following is true?**
+    1. This will be harmful to the project since now dev and test sets have different distributions. (*The quality and type of images are quite different thus we can’t consider that the dev and the test sets came from the same distribution).*
+5. **If your neural network model seems to have high variance, what of the following would be promising things to try?**
+    1. Add regularization
+    2. Get more training data
+6. **********************************************************************If your neural network model seems to have high bias, what of the following would be promising things to try?**
+    1. Make the Neural Network deeper
+    2. Increase the number of units in each hidden layer
+7. **A model developed for a project is presenting high bias. One of the sponsors of the project offers some resources that might help reduce the bias. Which of the following additional resources has a better chance to help reduce the bias?**
+    1. Give access to more computational resources like GPUs
+8. **You are working on an automated check-out kiosk for a supermarket, and are building a classifier for apples, bananas and oranges. Suppose your classifier obtains a training set error of 0.5%, and a dev set error of 7%. Which of the following are promising things to try to improve your classifier?**
+    
+    
+    ⇒ This implies that the model have high variance
+    
+    1. Increase the regularization lambda
+    2. Get more training data
+9. **********************************************************************************************You are working on an autmoated check-out kiosk for a supermarket and are building a classifier for apples, bananas, and oranges. Suppose your classifier obtains a training set error of 19% and a dev set error of 21%. Which of the following are promising things to try to improve your classifier?**
+    
+    ⇒ This implies that the model have high bias
+    
+    1. Use a bigger network.
+10. **************************Working on a model to classify bananas and oranges your classifier gets a training set error of 0.1% and a dev set error of 11%. Which of the following are true?**
+    1. The model overfitting the train set
+    2. The model has a high variance
+11. **Which of the following are regularization techniques?**
+    1. Dropout
+    2. Weight decay
+12. **What is a weight decay?**
+    1. A regularization technique (such as L2 regularization) that results in gradient descent shrinking the weights on every iteration.
+13. **To reduce high variance, the regularization hyperparameter lambda must be increased. True/False?**
+    1. True
+14. **What happens when you increase the regularization hyperparameter lambda?**
+    1. Weight are pushed toward becoming smaller (closer to 0)
+15. ****************************************************The regularization hyperparameter must be set to zero during testing to avoid getting random results. True/False?****************************************************
+    1. False. (*The regularization hyperparameter affects how the weights change during training, this means during backpropagation. It has no effect during the forward propagation that is when predictions for the test are made).*
+16. **Which of the following are true about dropout?**
+    1. It helps to reduce overfitting
+    2. It helps to reduce the variance of a model
+    3. In practice, it eliminates units of each layer with a probability of 1-keep_prob. (*The probability that dropout doesn’t eliminate a neuron is `keep_prob`)*. 
+17. **With the inverted dropout technique, at test time:**
+    1. You do not apply dropout (do not randomly eliminate units) and do not keep the 1/keep_prob factor in the calculations used in training.
+18. **Increasing the parameter keep_prob from (say) 0.5 to 0.6 will likely cause the following:**
+    1. Reducing the regularization effect
+    2. Causing the Neural Network to end up with a lower training set error
+19. **Decreasing the parameter keep_prob from (say) 0.6 to 0.4 will likely cause the following:**
+    1. Increasing the regularization effect. (*This will make the dropout have a higher probability of eliminating a node in the neural network, increasing regularization effect*).
+20. **Which of these techniques are useful for reducing variance (reducing overfitting)?**
+    1. Dropout
+    2. L2 regularization
+    3. Data Augmentation
+21. ********************************************************************************************************************************************Which of the following actions increase the regularization of a model?**
+    1. Increase the value of the hyperparameter lambda.
+    2. Make use of data augmentation.
+22. **Why do we normalize the inputs x?**
+    1. It makes the cost function faster to optimize
+23. ****************************************************************************************************************************************************Which of the following is the correct expression to normalize the input $X$?**
+    1. $x = \frac{1}{m} \sum_{i= 1}^{m}x^{(i)}$
